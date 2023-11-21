@@ -62,9 +62,7 @@ def test_get_list_of_favorites_books(books_collector):
     # Проверяем, что метод возвращает ожидаемый список избранных книг
     assert favorites == ["Book1", "Book2"]
 
-
-
-
+# коммент для второго ПРа
 
 
 
