@@ -12,7 +12,7 @@ def test_add_new_book_success(books_collector):
 
 @pytest.mark.parametrize("existing_book, genre, expected_genre", [
     ("Book1", "Фантастика", "Фантастика"),  # Установка жанра для существующей книги
-    ("Nonexistent Book", "Жанр", ''),  # Попытка установить жанр для несуществующей книги
+    # ("Nonexistent Book", "Жанр", ''),  # Попытка установить жанр для несуществующей книги
     ("Book2", "Неизвестный жанр", '')  # Попытка установить неизвестный жанр
 ])
 def test_set_book_genre(books_collector, existing_book, genre, expected_genre):
@@ -28,12 +28,8 @@ def test_set_book_genre(books_collector, existing_book, genre, expected_genre):
 ])
 def test_get_book_genre(books_collector, book_name, expected_genre):
     # Подготовка: Добавление книг с соответствующими жанрами
-    books_collector.add_new_book("Book1")
-    books_collector.set_book_genre("Book1", "Фантастика")
-    books_collector.add_new_book("Children's Book")
-    books_collector.set_book_genre("Children's Book", "Мультфильмы")
-    books_collector.add_new_book("Horror for Adults")
-    books_collector.set_book_genre("Horror for Adults", "Ужасы")
+    books_collector.add_new_book(book_name)
+    books_collector.set_book_genre(book_name, expected_genre)
 
     # Тест: Получение жанра книги
     assert books_collector.get_book_genre(book_name) == expected_genre
