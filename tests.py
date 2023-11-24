@@ -12,7 +12,6 @@ def test_add_new_book_success(books_collector):
 
 @pytest.mark.parametrize("existing_book, genre, expected_genre", [
     ("Book1", "Фантастика", "Фантастика"),  # Установка жанра для существующей книги
-    # ("Nonexistent Book", "Жанр", ''),  # Попытка установить жанр для несуществующей книги
     ("Book2", "Неизвестный жанр", '')  # Попытка установить неизвестный жанр
 ])
 def test_set_book_genre(books_collector, existing_book, genre, expected_genre):
@@ -118,6 +117,8 @@ def test_get_list_of_favorites_books(books_collector):
     books_collector.add_new_book("Book2")
     books_collector.add_book_in_favorites("Book1")
     books_collector.add_book_in_favorites("Book2")
+
+    assert "Book1" and "Book2" in books_collector.get_list_of_favorites_books()
 
 def test_add_book_with_age_rating_to_children_list(books_collector):
     # Добавляем книгу с возрастным рейтингом
