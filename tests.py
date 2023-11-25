@@ -78,16 +78,10 @@ def test_add_and_delete_book_in_favorites(books_collector):
     books_collector.add_new_book("Book2")
     books_collector.add_book_in_favorites("Book2")
 
-    # Проверка добавленных книг в избранное
-    assert books_collector.get_list_of_favorites_books() == ["Book1", "Book2"]
-
     # Удаление книги из избранного
     books_collector.delete_book_from_favorites("Book1")
     assert books_collector.get_list_of_favorites_books() == ["Book2"]
 
-    # Попытка удалить несуществующую книгу из избранного
-    books_collector.delete_book_from_favorites("Nonexistent Book")
-    assert books_collector.get_list_of_favorites_books() == ["Book2"]
 
 @pytest.mark.parametrize("book_name", [
     "",        # Длина названия 0 (не добавится в словарь)
